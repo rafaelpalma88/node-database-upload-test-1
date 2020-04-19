@@ -8,7 +8,7 @@ interface Request {
   title: string;
   value: number;
   type: 'income' | 'outcome';
-  category_id: string;
+  category: string;
 }
 
 class CreateTransactionService {
@@ -16,11 +16,17 @@ class CreateTransactionService {
     title,
     value,
     type,
-    category_id,
-  }: Request): Promise<Transaction> {
+    category,
+  }: Request): Promise<void> {
     const transactionsRepository = getCustomRepository(TransactionsRepository);
 
-    const transaction = transactionsRepository.create({
+    // checar se categoria ja existe no banco
+
+    /* const checkIfCategoryAlreadyExists = transactionsRepository.findOne({
+      where: { title: category },
+    });
+
+     const transaction = transactionsRepository.create({
       title,
       value,
       type,
@@ -29,7 +35,7 @@ class CreateTransactionService {
 
     await transactionsRepository.save(transaction);
 
-    return transaction;
+    return transaction; */
   }
 }
 
