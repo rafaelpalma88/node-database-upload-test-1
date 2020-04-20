@@ -13,6 +13,7 @@ export default class CreateRelationIntoBothTables1587325108356
       new TableColumn({
         name: 'category_id',
         type: 'uuid',
+        isNullable: true,
       }),
     );
 
