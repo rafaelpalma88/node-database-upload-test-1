@@ -16,13 +16,13 @@ class TransactionsRepository extends Repository<Transaction> {
     const income = transactions
       .filter(transaction => transaction.type === 'income')
       .reduce((total, currentValue) => {
-        return total + currentValue.value;
+        return total + Number(currentValue.value);
       }, 0);
 
     const outcome = transactions
       .filter(transaction => transaction.type === 'outcome')
       .reduce((total, currentValue) => {
-        return total + currentValue.value;
+        return total + Number(currentValue.value);
       }, 0);
 
     const balance: Balance = {
@@ -30,11 +30,6 @@ class TransactionsRepository extends Repository<Transaction> {
       outcome,
       total: income - outcome,
     };
-    console.log('xxxx');
-    console.log(typeof balance.income);
-    console.log(typeof balance.outcome);
-    console.log(typeof balance.total);
-    console.log('xxxx');
 
     return balance;
   }
