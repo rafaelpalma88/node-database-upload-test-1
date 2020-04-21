@@ -32,7 +32,7 @@ class CreateTransactionService {
       const balance = await transactionRepository.getBalance();
 
       if (value > balance.total) {
-        throw new AppError('No sufficient funds');
+        throw new AppError('You do not have enough balance');
       }
     }
 
